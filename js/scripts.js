@@ -53,15 +53,31 @@ $(document).ready(function(){
     scoreForTurnPlayer2 = 0;
     nextTurn();
   });
+
+  $("button#new-game").click(function () {
+    scoreForTurnPlayer1 = 0;
+    scoreForTurnPlayer2 = 0;
+    totalScorePlayer1 = 0;
+    totalScorePlayer2 = 0;
+    $("p#roll-result-player1").text("");
+    $("p#turn-score-player1").text("");
+    $("p#total-score-player1").text("");
+    $("p#roll-result-player2").text("");
+    $("p#turn-score-player2").text("");
+    $("p#total-score-player2").text("");
+    $("button.player1").show();
+    $("button.player2").hide();
+  })
 });
 
 var nextTurn = function () {
   $("button.player1").toggle();
   $("button.player2").toggle();
 }
-// Back end logic
-var turn = 1;
 
+
+
+// Back end logic
 var roll = function () {
   var integer = Math.floor(Math.random() * (6 - 1)) + 1;
     return integer;
