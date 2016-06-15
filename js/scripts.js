@@ -3,11 +3,14 @@
 // Front end logic
 
 $(document).ready(function(){
-  $("button#roll").click(function () {
+  $("button#roll-player1").click(function () {
     var rollResult = roll();
-    $("#output").text(rollResult);
+    $("#output-player1").text(rollResult);
   })
-
+  $("button#roll-player2").click(function () {
+    var rollResult = roll();
+    $("#output-player2").text(rollResult);
+  })
 });
 
 // Back end logic
