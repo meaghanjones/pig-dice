@@ -2,3 +2,7 @@
 .row {
   padding-bottom: 1em;
 }
+
+button.roll, button.hold, .start-game {
+  display: none;
+}

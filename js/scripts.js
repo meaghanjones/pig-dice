@@ -7,9 +7,10 @@ $(document).ready(function(){
   $("form.add-player").submit(function (event) {
     event.preventDefault();
     var playerName = $("input#player-name").val();
-    var newPlayer = new Player(playerName, 0, 0);
+    var newPlayer = new Player(playerName, 0);
     playerArray.push(newPlayer);
-    $(".player-controls").append("<div class='row'><h2>" + playerArray[playerArray.length-1].name + "</h2><button type='button' name='roll' class='btn btn-primary roll player" + playerArray.length + "' id='roll-player" + playerArray.length + "' value='" + playerArray.length + "'>Roll</button><button type='button' name='hold' class='btn btn-primary hold player" + playerArray.length + "' id='hold-player" + playerArray.length + "' value='" + playerArray.length + "'>Hold</button><div id='output-player" + playerArray.length + "'><p id='roll-result-player" + playerArray.length + "'></p><p id='turn-score-player" + playerArray.length + "'></p><p id='total-score-player" + playerArray.length + "'></p></div></div>");
+    $(".player-controls").append("<div class='row'><h2>" + playerArray[playerArray.length-1].name + "</h2><button type='button' name='roll' class='btn btn-primary roll player" + playerArray.length + "' id='roll-player" + playerArray.length + "' value='" + playerArray.length + "'>Roll</button><button type='button' name='hold' class='btn btn-primary hold player" + playerArray.length + "' id='hold-player" + playerArray.length + "' value='" + playerArray.length + "'>Hold</button><div id='output-player" + playerArray.length + "'><p class = 'output' id='roll-result-player" + playerArray.length + "'></p><p class = 'output' id='turn-score-player" + playerArray.length + "'></p><p class = 'output' id='total-score-player" + playerArray.length + "'></p></div></div>");
+    $(".start-game").show();
     $("input#player-name").val("");
   });
 
@@ -25,7 +26,6 @@ $(document).ready(function(){
       scoreForTurn = addRolls(scoreForTurn, rollResult);
       $("p#turn-score-player" + playerNumber).text(scoreForTurn);
     }
-
   });
 
   $(document.body).on('click', "button.hold", function() {
@@ -36,40 +36,42 @@ $(document).ready(function(){
       alert ("You Win!!!");
     }
     scoreForTurn = 0;
-    nextTurn();
+    nextTurn(playerNumber);
   });
 
   $("button#new-game").click(function () {
-    scoreForTurnPlayer1 = 0;
-    scoreForTurnPlayer2 = 0;
-    totalScorePlayer1 = 0;
-    totalScorePlayer2 = 0;
-    $("p#roll-result-player1").text("");
-    $("p#turn-score-player1").text("");
-    $("p#total-score-player1").text("");
-    $("p#roll-result-player2").text("");
-    $("p#turn-score-player2").text("");
-    $("p#total-score-player2").text("");
-    $("button.player1").show();
-    $("button.player2").hide();
+    scoreForTurn = 0;
+    $(".player-controls").text("");
+    playerArray.length = 0;
+    $("form.add-player").show();
+    $(".start-game").hide();
   })
 
+  $(document.body).on('click', "button#start-game", function() {
+    startGame();
+})
 
 });
 
-var nextTurn = function () {
-  // $("button.player1").toggle();
-  // $("button.player2").toggle();
+var nextTurn = function (playerNumber) {
+  if (playerNumber === playerArray.length) {
+    playerNumber = 1;
+  }
+  $("button.player" + playerNumber).toggle();
+  $("button.player" + (playerNumber + 1)).toggle();
 }
 
-
+var startGame = function () {
+  $("form.add-player").hide();
+  $(".start-game").hide();
+  $("button.player1").show();
+}
 
 // Back end logic
 var playerArray = [];
 
-var Player = function (name, turnScore, totalScore) {
+var Player = function (name, totalScore) {
   this.name = name;
-  this.turnScore = turnScore;
   this.totalScore = totalScore;
 }
 
