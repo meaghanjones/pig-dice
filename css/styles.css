@@ -1,1 +1,8 @@
 /*This file is for your custom css.  All yours*/
+button.player1 {
+
+}
+
+button.player2 {
+  display:none;
+}
