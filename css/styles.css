@@ -1,4 +1,4 @@
 /*This file is for your custom css.  All yours*/
-button.player2 {
-  display:none;
+.row {
+  padding-bottom: 1em;
 }

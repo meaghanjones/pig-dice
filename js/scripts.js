@@ -76,6 +76,8 @@ $(document).ready(function(){
     var playerName = $("input#player-name").val();
     var newPlayer = new Player(playerName, 0, 0);
     playerArray.push(newPlayer);
+    $(".player-controls").append("<div class='row'><button type='button' name='roll' class='btn btn-primary player" + playerArray.length + "' id='roll-player" + playerArray.length + "'>Roll</button><button type='button' name='hold' class='btn btn-primary player" + playerArray.length + "' id='hold-player" + playerArray.length + "'>Hold</button><div id='output-player" + playerArray.length + "'><p id='roll-result-player" + playerArray.length + "'></p><p id='turn-score-player" + playerArray.length + "'></p><p id='total-score-player" + playerArray.length + "'></p></div></div>");
+    $("input#player-name").val("");
   })
 });
 

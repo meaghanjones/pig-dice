@@ -41,47 +41,23 @@
           <form class="add-player">
             <div class="form-group">
               <label for="blank">Enter player name</label>
-              <input type="text" class="form-control" id="player-name" placeholder="Enter your name please">
+              <input type="text" class="form-control" id="player-name" placeholder="Enter your name please" required>
             </div>
             <button type="submit" name="add-player" class="btn btn-primary add-player" id="add-player">Add a player</button>
           </form>
         </div>
+        <div class="player-controls">
+
+        </div>
+
         <div class="row">
-          <div class="col-md-6">
-            <button type="button" name="roll" class="btn btn-primary player1" id="roll-player1">Roll</button>
-            <button type="button" name="hold" class="btn btn-primary player1" id="hold-player1">Hold</button>
-            <div id="output-player1">
-              <p id="roll-result-player1">
-
-              </p>
-              <p id="turn-score-player1">
-
-              </p>
-              <p id="total-score-player1">
-
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <button type="button" name="roll" class="btn btn-primary player2" id="roll-player2">Roll</button>
-            <button type="button" name="hold" class="btn btn-primary player2" id="hold-player2">Hold</button>
-            <div id="output-player2">
-              <p id="roll-result-player2">
-
-              </p>
-              <p id="turn-score-player2">
-
-              </p>
-              <p id="total-score-player2">
-
-              </p>
-            </div>
+          <div class="new-game">
+            <button type="button" name="hold" class="btn btn-primary" id="new-game">New Game</button>
           </div>
         </div>
       </div>
-      <div class="new-game">
-        <button type="button" name="hold" class="btn btn-primary" id="new-game">New Game</button>
       </div>
+
       <footer>
         <p>&copy; 2016 Epicodus Pair Project, Inc.</p>
       </footer>
