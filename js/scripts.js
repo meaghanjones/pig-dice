@@ -3,8 +3,7 @@
 // Front end logic
 
 $(document).ready(function(){
-  // var scoreForTurnPlayer1 = 0;
-  // var totalScorePlayer1 = 0;
+  var scoreForTurn = 0;
   $("form.add-player").submit(function (event) {
     event.preventDefault();
     var playerName = $("input#player-name").val();
@@ -19,50 +18,26 @@ $(document).ready(function(){
     var rollResult = roll();
     $("p#roll-result-player" + playerNumber).text(rollResult);
     if (rollResult === 1) {
-      playerArray[playerNumber-1].turnScore = 0;
-      $("p#turn-score-player" + playerNumber).text(playerArray[playerNumber-1].turnScore);
+      scoreForTurn = 0;
+      $("p#turn-score-player" + playerNumber).text(scoreForTurn);
       nextTurn();
     } else {
-      $("p#turn-score-player" + playerNumber).text(addRolls(playerArray[playerNumber-1].turnScore, rollResult));
+      scoreForTurn = addRolls(scoreForTurn, rollResult);
+      $("p#turn-score-player" + playerNumber).text(scoreForTurn);
     }
-    $(document.body).on('click', "button.hold", function() {
-      // var playerNumber = $(this).val();
-      $("p#total-score-player" + playerNumber).text(hold(playerArray[playerNumber-1].turnScore, playerArray[playerNumber-1].totalScore));
-      if (playerArray[playerNumber-1].totalScore >= 100) {
-        alert ("You Win!!!");
-      }
-      playerArray[playerNumber-1].turnScore = 0;
-      nextTurn();
-    });
+
   });
 
-
-  //
-  // var scoreForTurnPlayer2 = 0;
-  // var totalScorePlayer2 = 0;
-  // $("button#roll-player2").click(function () {
-  //   var rollResult = roll();
-  //   $("p#roll-result-player2").text(rollResult);
-  //   if (rollResult === 1){
-  //     scoreForTurnPlayer2 = 0;
-  //     $("p#turn-score-player2").text(scoreForTurnPlayer2);
-  //     nextTurn();
-  //   } else {
-  //     scoreForTurnPlayer2 = addRolls(scoreForTurnPlayer2, rollResult);
-  //     $("p#turn-score-player2").text(scoreForTurnPlayer2);
-  //
-  //     }
-  // });
-  //
-  // $("button#hold-player2").click(function () {
-  //   totalScorePlayer2 = hold(scoreForTurnPlayer2, totalScorePlayer2);
-  //   $("p#total-score-player2").text(totalScorePlayer2);
-  //   if (totalScorePlayer2 >= 100){
-  //     alert ("You Win!!!");
-  //   }
-  //   scoreForTurnPlayer2 = 0;
-  //   nextTurn();
-  // });
+  $(document.body).on('click', "button.hold", function() {
+    var playerNumber = $(this).val();
+    playerArray[playerNumber-1].totalScore = hold(scoreForTurn, playerArray[playerNumber-1].totalScore)
+    $("p#total-score-player" + playerNumber).text(playerArray[playerNumber-1].totalScore);
+    if (playerArray[playerNumber-1].totalScore >= 100) {
+      alert ("You Win!!!");
+    }
+    scoreForTurn = 0;
+    nextTurn();
+  });
 
   $("button#new-game").click(function () {
     scoreForTurnPlayer1 = 0;
@@ -109,7 +84,6 @@ var addRolls = function (currentScore, rollResult) {
 }
 
  var hold = function (scoreForTurn, totalScore) {
-   debugger;
    totalScore = totalScore + scoreForTurn;
    return totalScore;
  }
