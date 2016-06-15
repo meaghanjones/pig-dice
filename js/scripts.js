@@ -1,16 +1,18 @@
 /*This file is for your custom js.  All yours*/
 
-// Calls input from form-input.html
+// Front end logic
 
 $(document).ready(function(){
+  $("button#roll").click(function () {
+    var rollResult = roll();
+    $("#output").text(rollResult);
+  })
 
-  $("#input").submit(function(event){
-    event.preventDefault();
-    var input = ($("#blank").val());
-
-    var output = "";
-
-    $('#output').text(output);
-
-  });
 });
+
+// Back end logic
+
+var roll = function () {
+  var integer = Math.floor(Math.random() * (6 - 1)) + 1;
+  return integer;
+}
