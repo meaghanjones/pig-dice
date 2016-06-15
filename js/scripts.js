@@ -3,18 +3,19 @@
 // Front end logic
 
 $(document).ready(function(){
-  var scoreForTurn = 0;
+  var scoreForTurnPlayer1 = 0;
   $("button#roll-player1").click(function () {
     var rollResult = roll();
     $("p#roll-result-player1").text(rollResult);
-    scoreForTurn = addRolls(scoreForTurn, rollResult);
-    $("p#turn-score-player1").text(scoreForTurn);
+    scoreForTurnPlayer1 = addRolls(scoreForTurnPlayer1, rollResult);
+    $("p#turn-score-player1").text(scoreForTurnPlayer1);
   })
+  var scoreForTurnPlayer2 = 0;
   $("button#roll-player2").click(function () {
     var rollResult = roll();
     $("p#roll-result-player2").text(rollResult);
-    scoreForTurn = addRolls(scoreForTurn, rollResult);
-    $("p#turn-score-player2").text(scoreForTurn);
+    scoreForTurnPlayer2 = addRolls(scoreForTurnPlayer2, rollResult);
+    $("p#turn-score-player2").text(scoreForTurnPlayer2);
   })
 });
 
