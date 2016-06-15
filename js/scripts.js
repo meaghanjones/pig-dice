@@ -33,8 +33,8 @@ $(document).ready(function(){
     var playerNumber = parseInt($(this).val());
     playerArray[playerNumber-1].totalScore = hold(scoreForTurn, playerArray[playerNumber-1].totalScore)
     $("p#total-score-player" + playerNumber).text(playerArray[playerNumber-1].totalScore);
-    if (playerArray[playerNumber-1].totalScore >= 100) {
-      alert ("You Win!!!");
+    if (playerArray[playerNumber-1].totalScore >= 10) {
+      alert ("Congtratulations " + playerArray[playerNumber-1].name + "!!! You Win!!!");
     }
     scoreForTurn = 0;
     nextTurn(playerNumber);
