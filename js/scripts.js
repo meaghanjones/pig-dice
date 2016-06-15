@@ -3,6 +3,7 @@
 // Front end logic
 
 $(document).ready(function(){
+  var playerArray = [];
   var scoreForTurnPlayer1 = 0;
   var totalScorePlayer1 = 0;
   $("button#roll-player1").click(function () {
@@ -68,6 +69,14 @@ $(document).ready(function(){
     $("button.player1").show();
     $("button.player2").hide();
   })
+
+  $("form.add-player").submit(function (event) {
+    event.preventDefault();
+    debugger;
+    var playerName = $("input#player-name").val();
+    var newPlayer = new Player(playerName, 0, 0);
+    playerArray.push(newPlayer);
+  })
 });
 
 var nextTurn = function () {
@@ -78,6 +87,12 @@ var nextTurn = function () {
 
 
 // Back end logic
+var Player = function (name, turnScore, totalScore) {
+  this.name = name;
+  this.turnScore = turnScore;
+  this.totalScore = totalScore;
+}
+
 var roll = function () {
   var integer = Math.floor(Math.random() * (6 - 1)) + 1;
     return integer;
