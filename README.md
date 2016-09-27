@@ -1,4 +1,6 @@
-# Pig Dice by Meaghan and Kevin June 2016
+# Pig Dice 
+
+## by Meaghan and Kevin June 2016
 
 ## Description
 
