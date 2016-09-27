@@ -1,4 +1,4 @@
-# Pig Dice
+# Pig Dice by Meaghan and Kevin June 2016
 
 ## Description
 
@@ -21,4 +21,4 @@ _This web application allows two players to play a game of Pig Dice._
 
 Licensed under the MIT License
 
-Copyright (c) 2016 **Epicodus Pair Projects**
+Copyright (c) 2016 ** Meaghan and Kevin **
